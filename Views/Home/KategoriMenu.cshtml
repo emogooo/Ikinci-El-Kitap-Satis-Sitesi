@@ -1,0 +1,42 @@
+﻿@using Kitap.Entity;
+@model List<Kategori>
+@{
+    var seciliKategori = Url.RequestContext.RouteData.Values["id"];
+}
+
+<ul class="list-group" style="margin-top:100px; margin-left:100px">
+    <a href="/Home/Liste" class="list-group-item">
+        Tüm Kategoriler
+    </a>
+    @foreach (var kategori in Model)
+    {
+        if (seciliKategori != null)
+        {
+            if (kategori.Id == int.Parse(seciliKategori.ToString()))
+            {
+                <a href="/Home/Liste/@kategori.Id" class="list-group-item active">
+                    @kategori.isim
+                </a>
+            }
+            else
+            {
+                <a href="/Home/Liste/@kategori.Id" class="list-group-item">
+                    @kategori.isim
+                </a>
+            }
+        }
+        else
+        {
+            <a href="/Home/Liste/@kategori.Id" class="list-group-item">
+                @kategori.isim
+            </a>
+        }
+    }
+</ul>
+
+
+<!--
+    <div class="col-md-1">
+         (Et)Html.Action("KategoriMenu", "Home")
+    </div>
+-->

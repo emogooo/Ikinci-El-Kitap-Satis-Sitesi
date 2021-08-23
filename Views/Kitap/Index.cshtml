@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Kitap.Entity.Kitap>
+
+<div class="container pb-5">
+
+    <h2>Kitaplarım</h2>
+    <hr />
+    <p>
+        @Html.ActionLink("Kitap Ekle", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <hr />
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Resim.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategori.isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kondisyon.isim)
+            </th>
+            <th>   
+                @Html.DisplayNameFor(model => model.YayinEvi.isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aktif)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.Resim.url" width="70" height="70" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategori.isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kondisyon.isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YayinEvi.isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fiyat)
+                </td>
+                <td>
+                    @if (item.aktif)
+                    {
+                        <label>
+                            <i> Evet </i>
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <i> Hayır </i>
+                        </label>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

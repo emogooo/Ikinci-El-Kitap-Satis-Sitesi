@@ -1,0 +1,56 @@
+﻿@using Kitap.Models
+@model KitapDetayModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>İkinci El Kitap Sitesi - @Model.isim</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/Content/detay_css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src=@Model.Resim alt="..." width="300" height="600" /></div>
+                <div class="col-md-6">
+                    <h1 class="display-5 fw-bolder">@Model.isim</h1>
+                    <p class="lead" style="color:black; font-size:larger;">@Model.Yazar</p>
+                    <p class="lead" style="color:black; font-size:large;">@Model.YayinEvi</p>
+                    <div class="fs-5 mb-5">
+                        <span>₺@Model.fiyat.ToString("0.00")</span>
+                    </div>
+                    <p class="lead">@Model.ozet</p>
+                    <p class="lead" style="color:black; font-size:medium;">Yayın Tarihi: @Model.yayin_tarihi</p>
+                    <p class="lead" style="color:black; font-size:medium;">Sayfa Sayısı: @Model.sayfa_sayisi</p>
+                    <p class="lead" style="color:black; font-size:medium;">Kondisyon: @Model.Kondisyon</p>
+                    <p class="lead" style="color:black; font-size:medium;">Cilt Tipi: @Model.CiltTipi</p>
+                    <p class="lead" style="color:black; font-size:medium;">Dil: @Model.Dil</p>
+                    <p class="lead" style="color:black; font-size:medium;">Kategori: @Model.Kategori</p>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-dark flex-shrink-0" type="button" id="bilgiVer">
+                            <i class="bi-cart-fill me-1"></i>
+                            Satın Al!
+                        </button>
+                        <script>
+                            var btnBilgiVer = document.getElementById("bilgiVer");
+                            btnBilgiVer.onclick = function () {
+                                window.alert("Satın almak için ulaşın: @Model.KullaniciEposta, @Model.KullaniciAd");
+                            }
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/detay_js/scripts.js"></script>
+</body>
+</html>
+
+
